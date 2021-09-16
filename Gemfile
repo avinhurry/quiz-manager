@@ -46,6 +46,9 @@ group :development do
 
   # Testing framework for Rails 5+.
   gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
+
+  # Debugging tool
+  gem 'pry', '~> 0.14.1'
 end
 
 group :test do
