@@ -49,6 +49,9 @@ group :development do
 
   # Debugging tool
   gem 'pry', '~> 0.14.1'
+
+  # Generates entity relation diagrams
+  gem 'rails-erd', '~> 1.6', '>= 1.6.1'
 end
 
 group :test do

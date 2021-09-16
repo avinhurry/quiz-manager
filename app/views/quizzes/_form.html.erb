@@ -1,4 +1,5 @@
-<%= form_with(model: quiz) do |form| %>
+<%= form_for @quiz do |f| %>
+
   <% if quiz.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
@@ -12,13 +13,26 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
   </div>
-  <%=form.fields_for :questions do |builder| %>
-    <%= render 'question_fields', :f => builder%>
+
+  <p>
+  <%= f.fields_for :questions do |question| %>
+    <%= f.label :name, "Question" %><br>
+    <%= question.text_area :name, :rows => 3 %><br>
+    <%= question.check_box :_destroy %>
+    <%= f.label :_destroy, "Remove Question" %>
+    <%= question.fields_for :answers do |answer| %><br>
+      <%= f.label :name, "Answer" %><br>
+      <%= answer.text_field :name %><br>
+        <%= answer.check_box :_destroy %>
+        <%= f.label :_destroy, "Remove Answer" %><br>
+    <% end %>
   <% end %>
+  </p>
+
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

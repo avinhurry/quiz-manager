@@ -7,7 +7,14 @@
 
 <ol>
 <% for question in @quiz.questions %>
-  <li><%= question.name %></li>
+  <li>
+    <%= question.name %>
+    <ul>
+      <% for answer in question.answers %>
+      <li><%= answer.name %></li>
+        <% end %>
+    </ul>
+  </li>
 <% end %>
 </ol>
 

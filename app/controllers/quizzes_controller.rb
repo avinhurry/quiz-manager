@@ -3,24 +3,20 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: %i[show edit update destroy]
 
-  # GET /quizzes or /quizzes.json
   def index
     @quizzes = Quiz.all
   end
 
-  # GET /quizzes/1 or /quizzes/1.json
   def show; end
 
-  # GET /quizzes/new
   def new
     @quiz = Quiz.new
-    3.times { @quiz.questions.build }
+    question = @quiz.questions.build
+    3.times { question.answers.build }
   end
 
-  # GET /quizzes/1/edit
   def edit; end
 
-  # POST /quizzes or /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
 
@@ -35,7 +31,6 @@ class QuizzesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /quizzes/1 or /quizzes/1.json
   def update
     respond_to do |format|
       if @quiz.update(quiz_params)
@@ -48,7 +43,6 @@ class QuizzesController < ApplicationController
     end
   end
 
-  # DELETE /quizzes/1 or /quizzes/1.json
   def destroy
     @quiz.destroy
     respond_to do |format|
@@ -59,13 +53,20 @@ class QuizzesController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_quiz
     @quiz = Quiz.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.
   def quiz_params
-    params.require(:quiz).permit(:name, questions_attributes: Question.attribute_names.map(&:to_sym).push(:_destroy))
+    params.require(:quiz).permit(:name,
+                                 questions_attributes: [:name, :id, :_destroy, { answers_attributes: [:name, :id, :_destroy] }])
+
+    #TODO Delete this
+    #
+    # params.require(:quiz).permit(:name,
+    #                              questions_attributes: Question.attribute_names.map(&:to_sym).push(:_destroy),
+    #                              answers_attributes: Answer.attribute_names.map(&:to_sym).push(:_destroy)
+    #                              )
   end
 end
