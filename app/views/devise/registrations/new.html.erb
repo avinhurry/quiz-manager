@@ -25,6 +25,16 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: "Proco password" %>
       </div><br>
 
+      <div class="field form-group form-check">
+        <%= f.radio_button :user_type, "restricted_permission" %>
+        <%= f.label :user_type, "Restricted permission" %>
+        <%= f.radio_button :user_type, "view_permission" %>
+        <%= f.label :user_type, "View permission" %>
+        <%= f.radio_button :user_type, "edit_permission" %>
+        <%= f.label :user_type, "Edit permission" %>
+      </div><br>
+
+
       <% if devise_mapping.rememberable? %>
         <div class="field form-group">
           <%= f.check_box :remember_me, class: "form-check-input" %>

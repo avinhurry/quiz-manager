@@ -10,9 +10,12 @@
   <li>
     <%= question.name %>
     <ul>
-      <% for answer in question.answers %>
-      <li><%= answer.name %></li>
+
+      <%  unless current_user.user_type == "restricted_permission" %>
+        <% for answer in question.answers %>
+        <li><%= answer.name %></li>
         <% end %>
+      <% end %>
     </ul>
   </li>
 <% end %>
