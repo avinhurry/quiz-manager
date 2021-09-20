@@ -18,21 +18,18 @@
   </div>
 
   <p>
-  <%= f.fields_for :questions do |question| %>
-    <%= f.label :name, "Question" %><br>
-    <%= question.text_area :name, :rows => 3 %><br>
-    <%= question.check_box :_destroy %>
-    <%= f.label :_destroy, "Remove Question" %>
-    <%= question.fields_for :answers do |answer| %><br>
-      <%= f.label :name, "Answer" %><br>
-      <%= answer.text_field :name %><br>
-        <%= answer.check_box :_destroy %>
-        <%= f.label :_destroy, "Remove Answer" %><br>
+  <tbody class="question">
+    <%= f.fields_for :questions do |f| %>
+      <%= render 'question_fields', f: f %>
+        <%= f.fields_for :answers do |f| %><br>
+          <%= render 'answer_fields', f: f %>
+        <% end %>
     <% end %>
-  <% end %>
+  </tbody>
   </p>
 
   <div class="actions">
-    <%= f.submit %>
+      <%= f.submit class: 'btn btn-success btn-sm' %>
+    <%= link_to_add_association "Add Question", f, :questions, class: 'btn btn-primary btn-sm', data: { association_insert_node: '.question', association_insert_method: :append }%>
   </div>
 <% end %>
