@@ -1,0 +1,22 @@
+<div class="grid">
+  <h1 class="home-title">
+    Proco Manager
+  </h1>
+
+  <h2 class="home-description">
+    <p> On-line educational solutions, provided by WebbiSkools Ltd, for education establishments and training providers. </p>
+      <p> Design, build, and manage quizzes, each consisting of a set of multiple-choice questions and their associated answers.</p>
+  </h2>
+
+  <div class="home-image">
+    <%= image_tag('home_image.jpg', width: '350') %>
+  </div>
+
+  <div class="sign-in-out-button">
+    <% if user_signed_in? %>
+      <%= link_to "Sign out", destroy_user_session_path, :method => :delete, class: "nav-link" %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path, class: "nav-link" %>
+    <% end %>
+  </div>
+</div>
