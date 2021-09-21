@@ -1,6 +1,7 @@
 <h1>Editing Quiz</h1>
+<br>
 
 <%= render 'form', quiz: @quiz %>
-
-<%= link_to 'Show', @quiz %> |
-<%= link_to 'Back', quizzes_path %>
+<br>
+<%= link_to 'Back', quizzes_path, class: "btn btn-light" %>
+<%= link_to 'Show', @quiz, class: "btn btn-dark"%>

@@ -12,24 +12,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <%  if edit_permission? %>
+    <div class="field form-group">
+      <%= f.label :name, "Quiz name" %>
+      <%= f.text_field :name,
+        class: "form-control" %>
+    </div>
 
-  <p>
-  <tbody class="question">
-    <%= f.fields_for :questions do |f| %>
-      <%= render 'question_fields', f: f %>
-        <%= f.fields_for :answers do |f| %><br>
-          <%= render 'answer_fields', f: f %>
-        <% end %>
-    <% end %>
-  </tbody>
-  </p>
+    <p>
+    <tbody class="question field form-group">
+      <%= f.fields_for :questions do |f| %>
+        <%= render 'question_fields', f: f %>
+          <%= f.fields_for :answers do |f| %><br>
+            <%= render 'answer_fields', f: f %>
+          <% end %>
+      <% end %>
+    </tbody>
+    </p>
 
-  <div class="actions">
-      <%= f.submit class: 'btn btn-success btn-sm' %>
-    <%= link_to_add_association "Add Question", f, :questions, class: 'btn btn-primary btn-sm', data: { association_insert_node: '.question', association_insert_method: :append }%>
-  </div>
+    <div class="actions">
+      <%= link_to_add_association "Add Question", f, :questions, class: 'btn btn-primary btn-sm', data: { association_insert_node: '.question', association_insert_method: :append }%>
+        <br><br><%= f.submit class: 'btn btn-success btn-lg' %>
+    </div>
+  <% end %>
 <% end %>

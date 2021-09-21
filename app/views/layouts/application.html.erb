@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>QuizManager</title>
+    <title>Proco Manager</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,6 +14,10 @@
 <%= render 'home/navbar' %>
 
   <body>
+  <div class="container">
+    <br>
+      <%= render "layouts/alerts" if notice %>
+  </div>
     <%= yield %>
   </body>
 </html>

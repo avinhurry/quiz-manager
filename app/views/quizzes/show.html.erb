@@ -1,25 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @quiz.name %>
-</p>
-
-<ol>
-<% for question in @quiz.questions %>
-  <li>
-    <%= question.name %>
-    <ul>
-
-      <%  unless current_user.user_type == "restricted_permission" %>
-        <% for answer in question.answers %>
-        <li><%= answer.name %></li>
+<div class="bg-light p-5 rounded-lg m-3">
+  <h1 class="display-4"><%= @quiz.name %></h1>
+  <p class="lead">
+    <% for question in @quiz.questions %>
+      <%= question.name %>
+  </p>
+    <hr class="my-4">
+    <p>
+        <%  unless restricted_permission? %>
+          <% for answer in question.answers %>
+          <li><%= answer.name %></li>
+          <% end %>
         <% end %>
-      <% end %>
-    </ul>
-  </li>
-<% end %>
-</ol>
+    <% end %>
+  </p>
+    <br>
+  <%= link_to 'Back', quizzes_path, class: "btn btn-light"  %>
 
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
+  <% if edit_permission? %>
+    <%= link_to 'Edit', edit_quiz_path(@quiz), class: "btn btn-primary" %>
+  <% end %>
+</div>

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class QuizzesController < ApplicationController
+  before_action :authorize, only: %i[new edit create update destroy]
   before_action :set_quiz, only: %i[show edit update destroy]
 
   def index
@@ -46,7 +47,7 @@ class QuizzesController < ApplicationController
   def destroy
     @quiz.destroy
     respond_to do |format|
-      format.html { redirect_to quizzes_url, notice: 'Quiz was successfully destroyed.' }
+      format.html { redirect_to quizzes_url, notice: 'Quiz was successfully deleted.' }
       format.json { head :no_content }
     end
   end
@@ -60,13 +61,7 @@ class QuizzesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def quiz_params
     params.require(:quiz).permit(:name,
-                                 questions_attributes: [:name, :id, :_destroy, { answers_attributes: [:name, :id, :_destroy] }])
-
-    #TODO Delete this
-    #
-    # params.require(:quiz).permit(:name,
-    #                              questions_attributes: Question.attribute_names.map(&:to_sym).push(:_destroy),
-    #                              answers_attributes: Answer.attribute_names.map(&:to_sym).push(:_destroy)
-    #                              )
+                                 questions_attributes: [:name, :id, :_destroy,
+                                                        { answers_attributes: %i[name id _destroy] }])
   end
 end
