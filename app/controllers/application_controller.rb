@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def authorize
     unless edit_permission?
       redirect_to root_path, notice: "You are unable to perform this action as you have #{current_user.user_type.humanize.downcase} only,
-        If you believe this is an error please contact support at support@proco.com"
+        If you believe this is an error please contact support at #{Settings.support_email}"
       false
     end
   end
