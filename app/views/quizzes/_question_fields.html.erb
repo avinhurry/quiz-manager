@@ -1,8 +1,8 @@
 <div class="nested-fields form-group">
-  <%= f.label :name, "Question" %>
-  <%= f.text_field :name, class: "form-control" %><br>
+  <strong><%= f.label :name, "Question" %></strong>
+  <%= f.text_field :name, class: "form-control w-25 mx-auto" %><br>
   <td>
-    <%= link_to_add_association "Add Answer", f, :answers, class: 'btn btn-primary btn-sm', data: { association_insert_node: '.nested-fields', association_insert_method: :append }%>
+    <%= link_to_add_association "Add Answer", f, :answers, class: 'btn btn-info btn-sm', data: { association_insert_node: '.nested-fields', association_insert_method: :append }%>
     <%= link_to_remove_association "Delete Question", f, class: 'btn btn-secondary btn-sm' %>
   </td>
 </div><br>

@@ -57,6 +57,15 @@
   margin: 20px;
 }
 
+.centre-align {
+  text-align: center;
+}
+
+.proco-navbar {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
 //@media screen and (min-width: 736px) {
 @media screen and (min-width: 1000px) {
 
@@ -80,6 +89,7 @@
   .sign-in-out-button {
     grid-column: 1;
     grid-row: 3;
+    color: black;
   }
 
   .grid {

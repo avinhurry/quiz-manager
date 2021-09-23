@@ -1,38 +1,39 @@
-<%= form_for @quiz do |f| %>
+<div class="centre-align">
 
-  <% if quiz.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
+  <%= form_for @quiz do |f| %>
 
-      <ul>
-        <% quiz.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <% if quiz.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
 
-  <%  if edit_permission? %>
-    <div class="field form-group">
-      <%= f.label :name, "Quiz name" %>
-      <%= f.text_field :name,
-        class: "form-control" %>
-    </div>
-
-    <p>
-    <tbody class="question field form-group">
-      <%= f.fields_for :questions do |f| %>
-        <%= render 'question_fields', f: f %>
-          <%= f.fields_for :answers do |f| %><br>
-            <%= render 'answer_fields', f: f %>
+        <ul>
+          <% quiz.errors.each do |error| %>
+            <li><%= error.full_message %></li>
           <% end %>
-      <% end %>
-    </tbody>
-    </p>
+        </ul>
+      </div>
+    <% end %>
 
-    <div class="actions">
-      <%= link_to_add_association "Add Question", f, :questions, class: 'btn btn-primary btn-sm', data: { association_insert_node: '.question', association_insert_method: :append }%>
-        <br><br><%= f.submit class: 'btn btn-success btn-lg' %>
-    </div>
+    <%  if edit_permission? %>
+      <div class="field form-group w-25 mx-auto">
+        <strong><%= f.label :name, "Quiz name" %></strong>
+        <%= f.text_field :name,
+          class: "form-control" %>
+      </div>
+
+      <br>
+
+        <%= f.fields_for :questions do |f| %>
+          <%= render 'question_fields', f: f %>
+            <%= f.fields_for :answers do |f| %><br>
+              <%= render 'answer_fields', f: f %>
+            <% end %>
+        <% end %>
+
+      <div class="actions">
+        <%= link_to_add_association "Add Question", f, :questions, class: 'btn btn-primary btn-sm', data: { association_insert_node: '.question', association_insert_method: :append }%>
+          <br><br><%= f.submit class: 'btn btn-success btn-lg' %>
+      </div>
+    <% end %>
   <% end %>
-<% end %>
+</div>

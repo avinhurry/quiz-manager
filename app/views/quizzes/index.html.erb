@@ -1,29 +1,30 @@
-<h1>Quizzes</h1>
+<div class="m-5 justify-content-center centre-align">
+  <h1>Quizzes</h1>
 
-<table class="table table-bordered table-striped table-hover">
-  <thead class="table-dark">
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quizzes.each do |quiz| %>
+  <table class="w-50  mx-auto table table-bordered table-striped table-hover table-sm align-middle">
+    <thead class="table-dark">
       <tr>
-        <td><%= quiz.name %></td>
-        <td><%= link_to 'View', quiz %></td>
-      <%  if edit_permission? %>
-        <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
-        <td><%= link_to 'Delete', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      <% end %>
+        <th>Name</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-<% if edit_permission? %>
-  <%= link_to 'New Quiz', new_quiz_path, class: "btn btn-success" %>
-<% end %>
+    <tbody>
+      <% @quizzes.each do |quiz| %>
+        <tr>
+          <td><%= quiz.name %></td>
+          <td><%= link_to 'View', quiz %></td>
+        <%  if edit_permission? %>
+          <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
+          <td><%= link_to 'Delete', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+  <% if edit_permission? %>
+    <%= link_to 'New Quiz', new_quiz_path, class: "btn btn-success" %>
+  <% end %>
 </div>

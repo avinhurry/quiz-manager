@@ -1,7 +1,5 @@
+<h2 class="centre-align"><%= image_tag('light-proco-logo.png', width: '500') %></h2>
 <div class="card text-center">
-  <div class="card-header">
-    <h2><%= Settings.brand_name %></h2>
-  </div>
   <div class="card-body">
     <h5 class="card-title">Sign in</h5>
     <p class="card-text">
@@ -26,7 +24,7 @@
       <br>
 
       <div class="actions">
-        <%= f.submit "Sign in", class: 'btn btn-success btn-lg' %>
+        <%= f.submit "Sign in", class: 'sign-in-out-button' %>
       </div>
     <% end %>
     <br>
