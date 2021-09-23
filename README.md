@@ -1,24 +1,43 @@
-# README
+![Proco Manager](app/assets/images/light-proco-logo.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Proco Manager
 
-Things you may want to cover:
+A database-driven website to manage quizzes, each consisting of a set of multiple-choice questions and their associated answers. The website’s capabilities is only accessible to registered users. 
 
-* Ruby version
+* Users with **Edit permission** can **view and edit questions and answers**.
+* Users with **View permission** can **view questions and answers**.
+* Users with Restricted permission can only **view questions**.
 
-* System dependencies
+## Development
 
-* Configuration
+The required versions of build tools is defined in
+[.tool-versions](.tool-versions). These can be automatically installed with
+[asdf-vm](https://asdf-vm.com/), see their [installation
+instructions](https://asdf-vm.com/#/core-manage-asdf).
 
-* Database creation
+Once installed, run:
 
-* Database initialization
+```
+asdf plugin add ruby
+asdf plugin add nodejs
+asdf plugin add yarn
+asdf install
+```
 
-* How to run the test suite
+## Setting up the app in development
 
-* Services (job queues, cache servers, search engines, etc.)
+1. Run `bundle install` to install the gem dependencies
+2. Run `yarn` to install node dependencies
+3. Run `rails db:create` then `rails db:migrate` to set up the database development
+4. Run `bundle exec rails server` to launch the app on http://localhost:3000
 
-* Deployment instructions
+## Running specs
 
-* ...
+```
+bundle exec rspec
+```
+
+## Registration
+
+
+* On the registration page you will be asked which type of user you wish to register as, choose `Restricted permission`, `View permission`, `Edit permission` as appropriate.
