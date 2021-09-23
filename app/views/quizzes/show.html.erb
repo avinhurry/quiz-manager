@@ -6,7 +6,7 @@
   </p>
     <hr class="my-4">
     <p>
-        <%  unless restricted_permission? %>
+        <% unless restricted_permission? %>
           <% for answer in question.answers %>
           <li><%= answer.name %></li>
           <% end %>
