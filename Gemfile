@@ -33,6 +33,9 @@ gem 'devise', '~> 4.8'
 # Unobtrusive nested forms handling, using jQuery
 gem 'cocoon', '~> 1.2', '>= 1.2.15'
 
+# Manage multi-environment settings by calling `Settings.` from anywhere in the app
+gem 'config', '~> 3.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -60,6 +63,9 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
+
+  # mainly for launching save_and_open_page
+  gem 'launchy', '~> 2.5'
 
   gem 'selenium-webdriver'
 
