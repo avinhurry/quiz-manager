@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-
   user = User.create(
     email: 'test@example.com',
     password: 'password123',

@@ -48,7 +48,6 @@ RSpec.feature 'edit user journey', type: :feature do
     expect(page).to have_link('New Quiz')
   end
 
-
   def register_as_edit_user
     visit('/')
     click_link('Sign in', match: :first)
