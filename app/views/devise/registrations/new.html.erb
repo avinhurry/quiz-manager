@@ -7,7 +7,7 @@
         <%= render "devise/shared/error_messages", resource: resource %>
       <div class="field form-group col-sm-4 col offset-4">
         <%= f.label :email %><br />
-        <%= f.email_field :email, class: 'form-control', placeholder: "Email", autofocus: true, autocomplete: "email" %><br>
+        <%= f.email_field :email, class: 'form-control', placeholder: "example@proco.com", autofocus: true, autocomplete: "email" %><br>
       </div>
 
       <div class="field form-group col-sm-4 offset-4">
@@ -15,7 +15,7 @@
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "Proco password" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: "proco password" %>
       </div>
 
       <div class="field form-group col-sm-4 offset-4">

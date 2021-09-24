@@ -22,8 +22,12 @@ asdf plugin add ruby
 asdf plugin add nodejs
 asdf plugin add yarn
 asdf install
+asdf install ruby
 ```
 
+Ensure you are using the Ruby version which is in [.tool-versions](.tool-versions). Check by running `ruby -v`
+
+Install postgres, see their [installation instructions](https://postgresapp.com/)
 ## Setting up the app in development
 
 1. Run `bundle install` to install the gem dependencies
@@ -39,5 +43,16 @@ bundle exec rspec
 
 ## Registration
 
+* On the registration page `/users/sign_up`, enter an email and password.
+  
+* You will be asked which type of user you wish to register as, choose `Restricted permission`, `View permission`, `Edit permission` as appropriate.
 
-* On the registration page you will be asked which type of user you wish to register as, choose `Restricted permission`, `View permission`, `Edit permission` as appropriate.
+* To change your user type, you may re-register and select a different permission. 
+  
+* Alternatively, you can edit your user in the console by running the following commands
+
+```
+u = User.find_by(email: 'ENTER_EMAIL_ADDRESS_HERE')
+u.user_type = # 'restricted_permission', 'view_permission' or 'edit_permission'
+u.save!
+```

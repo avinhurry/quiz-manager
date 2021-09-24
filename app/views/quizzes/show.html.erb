@@ -9,7 +9,7 @@
         <% unless restricted_permission? %>
           <% for answer in question.answers %>
           <li><%= answer.name %></li>
-          <% end %>
+          <% end %><br>
         <% end %>
     <% end %>
   </p>
