@@ -2,6 +2,9 @@
 
 # Proco Manager
 
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-archived-lightgrey.svg)
+
 A database-driven website to manage quizzes, each consisting of a set of multiple-choice questions and their associated answers. The website’s capabilities is only accessible to registered users. 
 
 * Users with **Edit permission** can **view and edit questions and answers**.
